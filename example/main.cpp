@@ -1,11 +1,13 @@
 #include <QApplication>
 #include <QIcon>
+#include <QStyleFactory>
 
 #include "mainwindow.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    app.setStyle(QStyleFactory::create("Fusion"));
     app.setApplicationName("QHexEdit");
     app.setOrganizationName("QHexEdit");
     app.setWindowIcon(QIcon(":images/qhexedit.ico"));
