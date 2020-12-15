@@ -854,7 +854,7 @@ void QHexEdit::paintEvent(QPaintEvent *event)
             painter.drawLine(xCoordinate - pxOfsX, event->rect().top(), xCoordinate - pxOfsX, event->rect().bottom());
         }
 
-        painter.setPen(viewport()->palette().color(QPalette::WindowText));
+        painter.setPen(QColor("#6E6E6E"));
 
         // paint address area
         if (this->showAddressArea)
