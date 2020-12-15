@@ -430,7 +430,18 @@ private:
     QBrush _brushHighlighted;
     QPen _penHighlighted;
     bool _readOnly;
+
+    /**
+     * That property defines if the hex values looks as a-f if the value is
+     * false(default) or A-F if value is true.
+     */
     bool _hexCaps;
+
+    /**
+     * Property defines the dynamic calculation of bytesPerLine parameter
+     * depends of width of widget. set this property true to avoid horizontal
+     * scrollbars and show the maximal possible data. defalut value is false.
+     */
     bool _dynamicBytesPerLine;
 
     // other variables
@@ -456,7 +467,19 @@ private:
     qint64 _cursorPosition;
 
     QRect _cursorRect;                          // physical dimensions of cursor
-    QByteArray _data;                           // QHexEdit's data, when setup with QByteArray
+
+    /**
+     * @brief QHexEdit's data, when setup with QByteArray.
+     *
+     * Property data holds the content of QHexEdit. Call setData() to set the
+     * content of QHexEdit, data() returns the actual content. When calling
+     * setData() with a QByteArray as argument, QHexEdit creates a internal
+     * copy of the data.
+     *
+     * If you want to edit big files please use setData(), based on QIODevice.
+     */
+    QByteArray _data;
+
     QByteArray _dataShown;                      // data in the current View
     QByteArray _hexDataShown;                   // data in view, transformed to hex
     qint64 _lastEventSize;                      // size, which was emitted last time
