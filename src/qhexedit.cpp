@@ -105,19 +105,14 @@ void QHexEdit::setAddressWidth(int addressWidth)
     viewport()->update();
 }
 
-int QHexEdit::addressWidth()
+int QHexEdit::calculateNumberDecimalDigits()
 {
-    qint64 size = _chunks->size();
-    int n = 1;
-    if (size > Q_INT64_C(0x100000000)){ n += 8; size /= Q_INT64_C(0x100000000);}
-    if (size > 0x10000){ n += 4; size /= 0x10000;}
-    if (size > 0x100){ n += 2; size /= 0x100;}
-    if (size > 0x10){ n += 1;}
-
-    if (n > _addressWidth)
-        return n;
-    else
-        return _addressWidth;
+	// If your have a numbers that is positive integer then the number of
+	// decimal digits in the number is given exactly by:
+	// n = log10(a) + 1
+	const std::uint8_t numberDecimalDigits = std::log10(_chunks->size()) + 1;
+	// The minimum of decimal digits that will be return is of 4, for consistence
+	return numberDecimalDigits < 4 ? 4 : numberDecimalDigits;
 }
 
 void QHexEdit::setAsciiArea(bool asciiArea)
@@ -984,7 +979,7 @@ void QHexEdit::resizeEvent(QResizeEvent *)
     {
         int pxFixGaps = 0;
         if (this->showAddressArea)
-            pxFixGaps = addressWidth() * _pxCharWidth + _pxGapAdr;
+            pxFixGaps = calculateNumberDecimalDigits() * _pxCharWidth + _pxGapAdr;
         pxFixGaps += _pxGapAdrHex;
         if (this->showAsciiArea)
             pxFixGaps += _pxGapHexAscii;
@@ -1080,7 +1075,7 @@ void QHexEdit::adjust()
     // recalc Graphics
     if (this->showAddressArea)
     {
-		this->amountAddressDigits = addressWidth();
+		this->amountAddressDigits = calculateNumberDecimalDigits();
         _pxPosHexX = (this->amountAddressDigits * _pxCharWidth) + _pxGapAdrHex + _pxGapAdr;
     }
     else
@@ -1135,7 +1130,7 @@ QString QHexEdit::toReadable(const QByteArray &ba)
 
     for (int i=0; i < ba.size(); i += 16)
     {
-        QString addrStr = QString("%1").arg(_addressOffset + i, addressWidth(), 16, QChar('0'));
+        QString addrStr = QString("%1").arg(_addressOffset + i, calculateNumberDecimalDigits(), 16, QChar('0'));
         QString hexStr;
         QString ascStr;
         for (int j=0; j<16; j++)

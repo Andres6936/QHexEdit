@@ -79,7 +79,7 @@ class QHEXEDIT_API QHexEdit : public QAbstractScrollArea
 
     /*! Set and get the minimum width of the address area, width in characters.
     */
-    Q_PROPERTY(int addressWidth READ addressWidth WRITE setAddressWidth)
+    Q_PROPERTY(int addressWidth READ calculateNumberDecimalDigits WRITE setAddressWidth)
 
     /*! Switch the ascii area on (true, show it) or off (false, hide it).
     */
@@ -297,7 +297,7 @@ public:
     qint64 addressOffset();
     void setAddressOffset(qint64 addressArea);
 
-    int addressWidth();
+    int calculateNumberDecimalDigits();
     void setAddressWidth(int addressWidth);
 
     bool asciiArea();
@@ -413,7 +413,7 @@ private:
     bool _editAreaIsAscii;                      // flag about the ascii mode edited
 
     /**
-     * Real no of addressdigits, may be > addressWidth
+     * Real no of addressdigits, may be > calculateNumberDecimalDigits
      */
     int amountAddressDigits;
     bool _blink;                                // help get cursor blinking
