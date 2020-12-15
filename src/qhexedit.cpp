@@ -12,9 +12,7 @@
 
 QHexEdit::QHexEdit(QWidget *parent) : QAbstractScrollArea(parent)
 {
-	this->showAddressArea = true;
     _addressWidth = 4;
-	this->showAsciiArea = true;
     _overwriteMode = true;
     _highlighting = true;
     _readOnly = false;

@@ -387,14 +387,14 @@ private:
     /**
      * Left area of QHexEdit
      */
-    bool showAddressArea;
+    bool showAddressArea = true;
     QColor _addressAreaColor;
     int _addressWidth;
 
     /**
      * Right area of QHexEdit
      */
-    bool showAsciiArea;
+    bool showAsciiArea = true;
 
     qint64 _addressOffset;
     int _bytesPerLine;
