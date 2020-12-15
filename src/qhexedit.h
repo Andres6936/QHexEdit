@@ -385,21 +385,46 @@ private:
     // variables to store the property values
 
     /**
-     * Left area of QHexEdit
+     * Property address area switch the address area on or off. Set addressArea
+     * true (show it), false (hide it).
      */
     bool showAddressArea = true;
+
+    /**
+     * Property address area color sets (setAddressAreaColor()) the background
+     * color of address areas. You can also read the color (addressAreaColor()).
+     */
     QColor _addressAreaColor;
 
     /**
-     * Right area of QHexEdit
+     * Switch the ascii area on (true, show it) or off (false, hide it).
      */
     bool showAsciiArea = true;
 
+    /**
+     * Property addressOffset is added to the Numbers of the Address Area.
+     * A offset in the address area (left side) is sometimes useful, whe you
+     * show only a segment of a complete memory picture. With
+     * setAddressOffset() you set this property - with addressOffset() you
+     * get the current value.
+     */
     qint64 _addressOffset;
+
+    /**
+     * Set and get bytes number per line.
+     */
     int _bytesPerLine;
     int _hexCharsInLine;
     bool _highlighting;
+
+    /**
+     * Property overwrite mode sets (setOverwriteMode()) or gets
+     * (overwriteMode()) the mode in which the editor works. In overwrite
+     * mode the user will overwrite existing data. The size of data will be
+     * constant. In insert mode the size will grow, when inserting new data.
+     */
     bool _overwriteMode = false;
+
     QBrush _brushSelection;
     QPen _penSelection;
     QBrush _brushHighlighted;
@@ -414,12 +439,22 @@ private:
     /**
      * Real no of addressdigits, may be > calculateNumberDecimalDigits
      */
-    int amountAddressDigits;
+    int amountAddressDigits = 0;
+
     bool _blink;                                // help get cursor blinking
     QBuffer _bData;                             // buffer, when setup with QByteArray
     Chunks *_chunks;                            // IODevice based access to data
     QTimer _cursorTimer;                        // for blinking cursor
-    qint64 _cursorPosition;                     // absolute position of cursor, 1 Byte == 2 tics
+
+    /**
+     * @brief Absolute position of cursor, 1 Byte == 2 tics.
+     *
+     * Property cursorPosition sets or gets the position of the editor cursor
+     * in QHexEdit. Every byte in data has two cursor positions: the lower and
+     * upper Nibble. Maximum cursor position is factor two of data.size().
+     */
+    qint64 _cursorPosition;
+
     QRect _cursorRect;                          // physical dimensions of cursor
     QByteArray _data;                           // QHexEdit's data, when setup with QByteArray
     QByteArray _dataShown;                      // data in the current View
