@@ -415,6 +415,10 @@ private:
      */
     int _bytesPerLine;
     int _hexCharsInLine;
+
+    /**
+     * Switch the highlighting feature on or of: true (show it), false (hide it).
+     */
     bool _highlighting;
 
     /**
@@ -429,6 +433,13 @@ private:
     QPen _penSelection;
     QBrush _brushHighlighted;
     QPen _penHighlighted;
+
+    /**
+     * Property readOnly sets (setReadOnly()) or gets (isReadOnly) the mode
+     * in which the editor works. In readonly mode the the user can only
+     * navigate through the data and select data; modifying is not possible.
+     * This property's default is false.
+     */
     bool _readOnly;
 
     /**
