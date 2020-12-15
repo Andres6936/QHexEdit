@@ -411,7 +411,11 @@ private:
 
     // other variables
     bool _editAreaIsAscii;                      // flag about the ascii mode edited
-    int _addrDigits;                            // real no of addressdigits, may be > addressWidth
+
+    /**
+     * Real no of addressdigits, may be > addressWidth
+     */
+    int _addrDigits;
     bool _blink;                                // help get cursor blinking
     QBuffer _bData;                             // buffer, when setup with QByteArray
     Chunks *_chunks;                            // IODevice based access to data
