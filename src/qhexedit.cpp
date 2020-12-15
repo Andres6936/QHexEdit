@@ -847,7 +847,7 @@ void QHexEdit::paintEvent(QPaintEvent *event)
         if (_addressArea)
         {
 			painter.fillRect(QRect(-pxOfsX, event->rect().top(), _pxPosHexX - _pxGapAdrHex/2, height()), _addressAreaColor);
-			// Draw th line that separate the area of address and the area of hex view
+			// Draw the line that separate the area of address and the area of hex view
 			painter.setPen(Qt::lightGray);
 			// Indicate the position in x where begin to draw the line
 			const std::uint32_t xCoordinate = this->_pxPosHexX - (this->_pxGapAdrHex / 2);
@@ -857,9 +857,12 @@ void QHexEdit::paintEvent(QPaintEvent *event)
 
         if (_asciiArea)
         {
-            int linePos = _pxPosAsciiX - (_pxGapHexAscii / 2);
+			// Indicate the position in x where begin to draw the line
+            const std::uint32_t xCoordinate = _pxPosAsciiX - (_pxGapHexAscii / 2);
+            // Draw the line that separate the area of hex view and the area of ascii view
             painter.setPen(Qt::lightGray);
-            painter.drawLine(linePos - pxOfsX, event->rect().top(), linePos - pxOfsX, height());
+			// Draw the line from top to bottom of viewport (or event)
+            painter.drawLine(xCoordinate - pxOfsX, event->rect().top(), xCoordinate - pxOfsX, event->rect().bottom());
         }
 
         painter.setPen(viewport()->palette().color(QPalette::WindowText));
