@@ -399,7 +399,7 @@ private:
     int _bytesPerLine;
     int _hexCharsInLine;
     bool _highlighting;
-    bool _overwriteMode;
+    bool _overwriteMode = false;
     QBrush _brushSelection;
     QPen _penSelection;
     QBrush _brushHighlighted;

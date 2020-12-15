@@ -12,7 +12,6 @@
 
 QHexEdit::QHexEdit(QWidget *parent) : QAbstractScrollArea(parent)
 {
-    _overwriteMode = true;
     _highlighting = true;
     _readOnly = false;
     _cursorPosition = 0;
