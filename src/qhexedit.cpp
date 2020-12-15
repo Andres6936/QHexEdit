@@ -847,6 +847,7 @@ void QHexEdit::paintEvent(QPaintEvent *event)
         if (_addressArea)
         {
 			painter.fillRect(QRect(-pxOfsX, event->rect().top(), _pxPosHexX - _pxGapAdrHex/2, height()), _addressAreaColor);
+			// Draw th line that separate the area of address and the area of hex view
 			painter.setPen(Qt::lightGray);
 			painter.drawLine(this->_pxPosHexX - (this->_pxGapAdrHex / 2), event->rect().top(), this->_pxPosHexX - (this->_pxGapAdrHex / 2), event->rect().bottom());
         }
