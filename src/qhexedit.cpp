@@ -843,12 +843,18 @@ void QHexEdit::paintEvent(QPaintEvent *event)
 
         // draw some patterns if needed
         painter.fillRect(event->rect(), viewport()->palette().color(QPalette::Base));
+
         if (_addressArea)
-            painter.fillRect(QRect(-pxOfsX, event->rect().top(), _pxPosHexX - _pxGapAdrHex/2, height()), _addressAreaColor);
+        {
+			painter.fillRect(QRect(-pxOfsX, event->rect().top(), _pxPosHexX - _pxGapAdrHex/2, height()), _addressAreaColor);
+			painter.setPen(Qt::lightGray);
+			painter.drawLine(this->_pxPosHexX - (this->_pxGapAdrHex / 2), event->rect().top(), this->_pxPosHexX - (this->_pxGapAdrHex / 2), event->rect().bottom());
+        }
+
         if (_asciiArea)
         {
             int linePos = _pxPosAsciiX - (_pxGapHexAscii / 2);
-            painter.setPen(Qt::gray);
+            painter.setPen(Qt::lightGray);
             painter.drawLine(linePos - pxOfsX, event->rect().top(), linePos - pxOfsX, height());
         }
 
