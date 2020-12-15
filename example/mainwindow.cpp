@@ -334,6 +334,7 @@ void MainWindow::createToolBars()
     fileToolBar->addAction(saveAct);
 
     editToolBar = addToolBar(tr("Edit"));
+    editToolBar->setIconSize(QSize(16, 16));
     editToolBar->addAction(undoAct);
     editToolBar->addAction(redoAct);
     editToolBar->addAction(findAct);
