@@ -204,12 +204,12 @@ void MainWindow::init()
 
 void MainWindow::createActions()
 {
-    openAct = new QAction(QIcon("./images/open.png"), tr("&Open..."), this);
+    openAct = new QAction(QIcon("./Icons/MenuOpen.svg"), tr("&Open..."), this);
     openAct->setShortcuts(QKeySequence::Open);
     openAct->setStatusTip(tr("Open an existing file"));
     connect(openAct, SIGNAL(triggered()), this, SLOT(open()));
 
-    saveAct = new QAction(QIcon("./images/save.png"), tr("&Save"), this);
+    saveAct = new QAction(QIcon("./Icons/MenuSaveAll.svg"), tr("&Save"), this);
     saveAct->setShortcuts(QKeySequence::Save);
     saveAct->setStatusTip(tr("Save the document to disk"));
     connect(saveAct, SIGNAL(triggered()), this, SLOT(save()));
@@ -228,11 +228,11 @@ void MainWindow::createActions()
     exitAct->setStatusTip(tr("Exit the application"));
     connect(exitAct, SIGNAL(triggered()), qApp, SLOT(closeAllWindows()));
 
-    undoAct = new QAction(QIcon("./images/undo.png"), tr("&Undo"), this);
+    undoAct = new QAction(QIcon("./Icons/Undo.svg"), tr("&Undo"), this);
     undoAct->setShortcuts(QKeySequence::Undo);
     connect(undoAct, SIGNAL(triggered()), hexEdit, SLOT(undo()));
 
-    redoAct = new QAction(QIcon("./images/redo.png"), tr("&Redo"), this);
+    redoAct = new QAction(QIcon("./Icons/Redo.svg"), tr("&Redo"), this);
     redoAct->setShortcuts(QKeySequence::Redo);
     connect(redoAct, SIGNAL(triggered()), hexEdit, SLOT(redo()));
 
@@ -248,7 +248,7 @@ void MainWindow::createActions()
     aboutQtAct->setStatusTip(tr("Show the Qt library's About box"));
     connect(aboutQtAct, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
 
-    findAct = new QAction(QIcon("./images/find.png"), tr("&Find/Replace"), this);
+    findAct = new QAction(QIcon("./Icons/Find.svg"), tr("&Find/Replace"), this);
     findAct->setShortcuts(QKeySequence::Find);
     findAct->setStatusTip(tr("Show the Dialog for finding and replacing"));
     connect(findAct, SIGNAL(triggered()), this, SLOT(showSearchDialog()));
@@ -329,8 +329,10 @@ void MainWindow::createStatusBar()
 void MainWindow::createToolBars()
 {
     fileToolBar = addToolBar(tr("File"));
+    fileToolBar->setIconSize(QSize(16, 16));
     fileToolBar->addAction(openAct);
     fileToolBar->addAction(saveAct);
+
     editToolBar = addToolBar(tr("Edit"));
     editToolBar->addAction(undoAct);
     editToolBar->addAction(redoAct);
