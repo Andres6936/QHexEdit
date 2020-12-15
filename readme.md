@@ -21,6 +21,24 @@ You can read the documentation of the project [here](http://simsys.github.io/). 
 ## Contributing to QHexEdit
 We love to receive contributions. You can submit bug reports [here](https://github.com/Simsys/qhexedit2/issues). If you are a developer, you can pick up a work item and start to realize super exciting features or fix bugs. We also like to receive enhancement proposals or translation support.
 
+## Compiling
+
+Is important set the CMAKE_PREFIX_PATH to Qt installation.
+
+```shell
+mkdir Build && cd Build
+cmake .. -DCMAKE_PREFIX_PATH="<Your Qt path installation>"
+make
+```
+
+Example:
+
+```shell
+mkdir Build && cd Build
+cmake .. -DCMAKE_PREFIX_PATH="/home/andres6936/QTCreator/5.5/gcc_64"
+make
+```
+
 ## License
 ```
 Copyright (C) 2015-2016 Winfried Simon
