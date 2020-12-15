@@ -14,7 +14,7 @@ QHexEdit::QHexEdit(QWidget *parent) : QAbstractScrollArea(parent)
 {
 	this->showAddressArea = true;
     _addressWidth = 4;
-	showAsciiArea = true;
+	this->showAsciiArea = true;
     _overwriteMode = true;
     _highlighting = true;
     _readOnly = false;
@@ -126,7 +126,7 @@ void QHexEdit::setAsciiArea(bool asciiArea)
 {
     if (!asciiArea)
         _editAreaIsAscii = false;
-	showAsciiArea = asciiArea;
+	this->showAsciiArea = asciiArea;
     adjust();
     setCursorPosition(_cursorPosition);
     viewport()->update();
@@ -134,7 +134,7 @@ void QHexEdit::setAsciiArea(bool asciiArea)
 
 bool QHexEdit::asciiArea()
 {
-    return showAsciiArea;
+    return this->showAsciiArea;
 }
 
 void QHexEdit::setBytesPerLine(int count)
@@ -204,7 +204,7 @@ qint64 QHexEdit::cursorPosition(QPoint pos)
         result = _bPosFirst * 2 + x + y;
     }
     else
-        if (showAsciiArea && (posX >= _pxPosAsciiX) && (posX < (_pxPosAsciiX + (1 + _bytesPerLine) * _pxCharWidth)))
+        if (this->showAsciiArea && (posX >= _pxPosAsciiX) && (posX < (_pxPosAsciiX + (1 + _bytesPerLine) * _pxCharWidth)))
         {
             _editAreaIsAscii = true;
             int x = 2 * (posX - _pxPosAsciiX) / _pxCharWidth;
@@ -855,7 +855,7 @@ void QHexEdit::paintEvent(QPaintEvent *event)
 			painter.drawLine(xCoordinate, event->rect().top(), xCoordinate, event->rect().bottom());
         }
 
-        if (showAsciiArea)
+        if (this->showAsciiArea)
         {
 			// Indicate the position in x where begin to draw the line
             const std::uint32_t xCoordinate = _pxPosAsciiX - (_pxGapHexAscii / 2);
@@ -922,7 +922,7 @@ void QHexEdit::paintEvent(QPaintEvent *event)
                 pxPosX += 3*_pxCharWidth;
 
                 // render ascii value
-                if (showAsciiArea)
+                if (this->showAsciiArea)
                 {
                     int ch = (uchar)_dataShown.at(bPosLine + colIdx);
                     if ( ch < ' ' || ch > '~' )
@@ -988,7 +988,7 @@ void QHexEdit::resizeEvent(QResizeEvent *)
         if (this->showAddressArea)
             pxFixGaps = addressWidth() * _pxCharWidth + _pxGapAdr;
         pxFixGaps += _pxGapAdrHex;
-        if (showAsciiArea)
+        if (this->showAsciiArea)
             pxFixGaps += _pxGapHexAscii;
 
         // +1 because the last hex value do not have space. so it is effective one char more
@@ -996,7 +996,7 @@ void QHexEdit::resizeEvent(QResizeEvent *)
 
         // 2 hex alfa-digits 1 space 1 ascii per byte = 4; if ascii is disabled then 3
         // to prevent devision by zero use the min value 1
-        setBytesPerLine(std::max(charWidth / (showAsciiArea ? 4 : 3),1));
+        setBytesPerLine(std::max(charWidth / (this->showAsciiArea ? 4 : 3),1));
     }
     adjust();
 }
@@ -1092,7 +1092,7 @@ void QHexEdit::adjust()
 
     // set horizontalScrollBar()
     int pxWidth = _pxPosAsciiX;
-    if (showAsciiArea)
+    if (this->showAsciiArea)
         pxWidth += _bytesPerLine*_pxCharWidth;
     horizontalScrollBar()->setRange(0, pxWidth - viewport()->width());
     horizontalScrollBar()->setPageStep(viewport()->width());
