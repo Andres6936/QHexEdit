@@ -383,10 +383,19 @@ private:
     qint64 _bPosCurrent;                        // current position
 
     // variables to store the property values
-    bool _addressArea;                          // left area of QHexEdit
+
+    /**
+     * Left area of QHexEdit
+     */
+    bool showAddressArea;
     QColor _addressAreaColor;
     int _addressWidth;
-    bool _asciiArea;
+
+    /**
+     * Right area of QHexEdit
+     */
+    bool showAsciiArea;
+
     qint64 _addressOffset;
     int _bytesPerLine;
     int _hexCharsInLine;
