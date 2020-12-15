@@ -1081,7 +1081,7 @@ void QHexEdit::adjust()
     if (this->showAddressArea)
     {
 		this->amountAddressDigits = addressWidth();
-        _pxPosHexX = _pxGapAdr + this->amountAddressDigits * _pxCharWidth + _pxGapAdrHex;
+        _pxPosHexX = (this->amountAddressDigits * _pxCharWidth) + _pxGapAdrHex + _pxGapAdr;
     }
     else
         _pxPosHexX = _pxGapAdrHex;
