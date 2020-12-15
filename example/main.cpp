@@ -5,7 +5,6 @@
 
 int main(int argc, char *argv[])
 {
-    Q_INIT_RESOURCE(qhexedit);
     QApplication app(argc, argv);
     app.setApplicationName("QHexEdit");
     app.setOrganizationName("QHexEdit");
