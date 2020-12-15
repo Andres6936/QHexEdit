@@ -295,8 +295,6 @@ void MainWindow::createStatusBar()
     lbAddressName->setText(tr("Address:"));
     statusBar()->addPermanentWidget(lbAddressName);
     lbAddress = new QLabel();
-    lbAddress->setFrameShape(QFrame::Panel);
-    lbAddress->setFrameShadow(QFrame::Sunken);
     lbAddress->setMinimumWidth(70);
     statusBar()->addPermanentWidget(lbAddress);
     connect(hexEdit, SIGNAL(currentAddressChanged(qint64)), this, SLOT(setAddress(qint64)));
@@ -306,8 +304,6 @@ void MainWindow::createStatusBar()
     lbSizeName->setText(tr("Size:"));
     statusBar()->addPermanentWidget(lbSizeName);
     lbSize = new QLabel();
-    lbSize->setFrameShape(QFrame::Panel);
-    lbSize->setFrameShadow(QFrame::Sunken);
     lbSize->setMinimumWidth(70);
     statusBar()->addPermanentWidget(lbSize);
     connect(hexEdit, SIGNAL(currentSizeChanged(qint64)), this, SLOT(setSize(qint64)));
@@ -317,8 +313,6 @@ void MainWindow::createStatusBar()
     lbOverwriteModeName->setText(tr("Mode:"));
     statusBar()->addPermanentWidget(lbOverwriteModeName);
     lbOverwriteMode = new QLabel();
-    lbOverwriteMode->setFrameShape(QFrame::Panel);
-    lbOverwriteMode->setFrameShadow(QFrame::Sunken);
     lbOverwriteMode->setMinimumWidth(70);
     statusBar()->addPermanentWidget(lbOverwriteMode);
     setOverwriteMode(hexEdit->overwriteMode());
