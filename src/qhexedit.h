@@ -415,7 +415,7 @@ private:
     /**
      * Real no of addressdigits, may be > addressWidth
      */
-    int _addrDigits;
+    int amountAddressDigits;
     bool _blink;                                // help get cursor blinking
     QBuffer _bData;                             // buffer, when setup with QByteArray
     Chunks *_chunks;                            // IODevice based access to data

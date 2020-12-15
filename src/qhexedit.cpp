@@ -871,7 +871,7 @@ void QHexEdit::paintEvent(QPaintEvent *event)
             QString address;
             for (int row=0, pxPosY = _pxCharHeight; row < (_dataShown.size()/_bytesPerLine); row++, pxPosY +=_pxCharHeight)
             {
-                address = QString("%1").arg(_bPosFirst + row*_bytesPerLine + _addressOffset, _addrDigits, 10, QChar('0'));
+                address = QString("%1").arg(_bPosFirst + row*_bytesPerLine + _addressOffset, this->amountAddressDigits, 10, QChar('0'));
                 painter.drawText(_pxPosAdrX - pxOfsX, pxPosY, hexCaps() ? address.toUpper() : address);
             }
         }
@@ -1080,8 +1080,8 @@ void QHexEdit::adjust()
     // recalc Graphics
     if (this->showAddressArea)
     {
-        _addrDigits = addressWidth();
-        _pxPosHexX = _pxGapAdr + _addrDigits*_pxCharWidth + _pxGapAdrHex;
+		this->amountAddressDigits = addressWidth();
+        _pxPosHexX = _pxGapAdr + this->amountAddressDigits * _pxCharWidth + _pxGapAdrHex;
     }
     else
         _pxPosHexX = _pxGapAdrHex;
