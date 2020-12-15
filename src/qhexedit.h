@@ -440,7 +440,7 @@ private:
      * navigate through the data and select data; modifying is not possible.
      * This property's default is false.
      */
-    bool _readOnly;
+    bool _readOnly = true;
 
     /**
      * That property defines if the hex values looks as a-f if the value is

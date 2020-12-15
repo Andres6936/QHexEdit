@@ -13,7 +13,6 @@
 QHexEdit::QHexEdit(QWidget *parent) : QAbstractScrollArea(parent)
 {
     _highlighting = true;
-    _readOnly = false;
     _cursorPosition = 0;
     _lastEventSize = 0;
     _hexCharsInLine = 47;
