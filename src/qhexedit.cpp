@@ -12,7 +12,6 @@
 
 QHexEdit::QHexEdit(QWidget *parent) : QAbstractScrollArea(parent)
 {
-    _addressWidth = 4;
     _overwriteMode = true;
     _highlighting = true;
     _readOnly = false;
@@ -99,7 +98,6 @@ qint64 QHexEdit::addressOffset()
 
 void QHexEdit::setAddressWidth(int addressWidth)
 {
-    _addressWidth = addressWidth;
     adjust();
     setCursorPosition(_cursorPosition);
     viewport()->update();

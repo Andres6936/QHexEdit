@@ -389,7 +389,6 @@ private:
      */
     bool showAddressArea = true;
     QColor _addressAreaColor;
-    int _addressWidth;
 
     /**
      * Right area of QHexEdit
